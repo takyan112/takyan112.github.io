@@ -1,5 +1,10 @@
-var canvas = document.getElementById("canvas");
-ctx = canvas.getContext("2d");
+function setElementPosition(el, x, y) {
+	el.style.position = 'absolute';
+	el.style.left = x + 'px';
+	el.style.top = y + 'px';
+}
+
+var logo = document.getElementById('DVD_logo');
 var t0 = 0;
 var x = 0;
 var y = 0;
@@ -10,19 +15,20 @@ function loop(t) {
 	var dt = t - t0;
 	t0 = t;
 	
+	var w = window.innerWidth;
+	var h = window.innerHeight;
+	
 	x += vx * dt;
 	y += vy * dt; 
-	if (x < 0 || 480-30 <= x) {
+	if (x < 0 || w-logo.width <= x) {
 		vx *= -1;
 		x += vx * dt;
 	}
-	if (y < 0 || 360-30 <= y) {
+	if (y < 0 || h-logo.height <= y) {
 		vy *= -1;
 		y += vy * dt;
 	}
-	ctx.fillStyle = "red";
-	ctx.fillRect(0, 0, 480, 360);
-	ctx.fillStyle = "blue";
-	ctx.fillRect(x, y, 30, 30);
+	
+	setElementPosition(logo, x, y);
 	window.requestAnimationFrame(loop);
 }
