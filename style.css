@@ -1,0 +1,18 @@
+p {
+	font-size: 30px;
+	animation-name: rainbow;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+
+@keyframes rainbow {
+	0%   {color:red; }
+	14%  {color:orange; }
+	29%  {color:yellow; }
+	43%  {color:green; }
+	57%  {color:cyan; }
+	71%  {color:blue; }
+	86%  {color:violet; }
+	100% {color:red; }
+}
