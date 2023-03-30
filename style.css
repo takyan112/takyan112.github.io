@@ -1,7 +1,10 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+#DVD_logo {
+	overflow: hidden;
+}
+
+#DVD_svg {
+	transform: translateX(100px);
+	filter: drop-shadow(-100px 0px 0px red);
 }
 
 p {
