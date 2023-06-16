@@ -16,6 +16,7 @@ var x = 0;
 var y = 0;
 var vx = 0.1;
 var vy = 0.1;
+var color = randomColor();
 window.requestAnimationFrame(loop);
 function loop(t) {
 	var dt = t - t0;
@@ -29,12 +30,22 @@ function loop(t) {
 	if (x < 0 || w-svg.width <= x) {
 		vx *= -1;
 		x += vx * dt;
-		svg.style = `filter: drop-shadow(-100px 0px 0px ${randomColor()});`;
+		var new_color = randomColor();
+		while (new_color == color) {
+			new_color = randomColor();
+		}
+		color = new_color;
+		svg.style = `filter: drop-shadow(-100px 0px 0px ${color});`;
 	}
 	if (y < 0 || h-svg.height <= y) {
 		vy *= -1;
 		y += vy * dt;
-		svg.style = `filter: drop-shadow(-100px 0px 0px ${randomColor()});`;
+		var new_color = randomColor();
+		while (new_color == color) {
+			new_color = randomColor();
+		}
+		color = new_color;
+		svg.style = `filter: drop-shadow(-100px 0px 0px ${color});`;
 	}
 	
 	setElementPosition(logo, x, y);
